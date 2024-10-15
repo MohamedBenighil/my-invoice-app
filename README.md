@@ -16,7 +16,7 @@ npx shadcn@latest init # (Which style would you like to use ? NewYork > Which co
 # app/page.tsx : add button : google > shadcn > Docs > Installation > Butoon > Installation
 npx shadcn@latest add button # see app/componenets/ui & app/lib
 
-#Dashboard
+#00:04:20 - Creating a Dashboard with Tailwind and shadcn/ui
 # app/dashboard/page.tsx :
     # Add Table, Badge, button
         # shadcn  > table, Badge and button(add invoice)
