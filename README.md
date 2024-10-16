@@ -28,4 +28,15 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # create a from with shadcn input, label and textaerea
 
 
+
+#===============================================================
+# 00:34:15 - Installing & Configuring Xata & Drizzle ORM
+# Xata (https://xata.io/) : where you create a potgres db.
+    # Save "PostgreSQL endpoint" in env.local in root as env var. Select "TypeScript with Drizzle ORM". Install "dependencies and types"
+    # create db/index.ts
+        # use pool (see doc) instead of client (default) to connect to db
+
+# drizzle orm : desing a db and query. It is native to js (new way to interact with db)
+
+
 ```
