@@ -35,8 +35,10 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # Save "PostgreSQL endpoint" in env.local in root as env var. Select "TypeScript with Drizzle ORM". Install "dependencies and types"
     # create db/index.ts
         # use pool (see doc) instead of client (default) to connect to db
-
 # drizzle orm : desing a db and query. It is native to js (new way to interact with db)
 
-
+#===============================================================
+#00:42:28 - Creating Table Schemas for Invoice Data
+# create the table app/db/schema.ts
+# pass the table in app/db/index.ts
 ```
