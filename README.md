@@ -23,6 +23,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # Add icon (+) to button
         # https://lucide.dev/icons/?focus
 
+#00:25:00 - Adding a new Create Invoice Form
+# app/invoice/new/page.tsx
+    # create a from with shadcn input, label and textaerea
 
 
 ```
