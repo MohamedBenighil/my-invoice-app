@@ -41,4 +41,13 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 #00:42:28 - Creating Table Schemas for Invoice Data
 # create the table app/db/schema.ts
 # pass the table in app/db/index.ts
+
+#===============================================================
+#00:49:07 - Generating & Running Migrations with Drizzle Kit
+# create app/db/drizzle.config.ts (see https://orm.drizzle.team/docs/get-started/postgresql-new#step-5---setup-drizzle-config-file)
+# npm install dotenv : to tell where env var are located (if diffirent than defaul .env e.g: env.local)
+# npm run generate
+# npm run migrate
+# verify the migration on xata
+
 ```
