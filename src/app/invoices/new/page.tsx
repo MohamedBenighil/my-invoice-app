@@ -3,9 +3,9 @@
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/Label";
-import { Button } from "@/components/ui/button";
 import { createAction } from "@/app/actions";
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState, startTransition } from "react";
+import SubmitButton from "@/components/SubmitButton";
 
 export default function Home() {
   const [state, setState] = useState("ready");
@@ -15,10 +15,15 @@ export default function Home() {
     event.preventDefault();
     if (state === "pending") return;
     setState("pending");
-    const target = event.target as HTMLFormElement;
-    const formData = new FormData(target);
-    await createAction(formData);
-    console.log("hey");
+
+    // to get the value "true" for pending used in SubmitButton (during the submit form)
+    // also upgrade to next js 15
+    startTransition(async () => {
+      const target = event.target as HTMLFormElement;
+      const formData = new FormData(target);
+      await createAction(formData);
+      console.log("hey");
+    });
   }
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
@@ -57,7 +62,7 @@ export default function Home() {
           <Textarea name="description" id="description" />
         </div>
         <div>
-          <Button className="w-full font-semibold"> Submit </Button>
+          <SubmitButton />
         </div>
       </form>
     </main>
