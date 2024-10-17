@@ -50,7 +50,17 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 # npm run migrate
 # verify the migration on xata
 
-
 #===============================================================
 #00:55:26 - Adding new Invoices with Server Actions
+
+
+#===============================================================
+#01:05:07 - Progressively Enhanced Forms in React 19 & Next.js 15
+# create a client feature : prevent the user to click submit button multiple times, and showing load icon
+    # create onSubmit with state ("reday" or "pending" )
+    # prevent action to execute UNTIL the button is clicked (call the action inside onSubmit) because we are at client side
+        # prevent default behavor
+        # call createAction manually
+
+# what if js is desabled ? it still works
 ```

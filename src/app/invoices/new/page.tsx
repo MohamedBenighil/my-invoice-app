@@ -1,10 +1,25 @@
+"use client";
+
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/Label";
 import { Button } from "@/components/ui/button";
 import { createAction } from "@/app/actions";
+import { SyntheticEvent, useState } from "react";
 
-export default async function Home() {
+export default function Home() {
+  const [state, setState] = useState("ready");
+
+  // only on client
+  async function hundleOnSubmit(event: SyntheticEvent) {
+    event.preventDefault();
+    if (state === "pending") return;
+    setState("pending");
+    const target = event.target as HTMLFormElement;
+    const formData = new FormData(target);
+    await createAction(formData);
+    console.log("hey");
+  }
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className="flex flex-col justify-left h-full  max-w-5xl mx-auto gap-6 my-12">
@@ -12,7 +27,11 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">Create invoices</h1>
       </div>
 
-      <form action={createAction} className="grid gap-4 max-w-xs">
+      <form
+        action={createAction}
+        onSubmit={hundleOnSubmit}
+        className="grid gap-4 max-w-xs"
+      >
         <div>
           <Label className="block font-semibold text-sm mb-2" htmlFor="name">
             Billing name
