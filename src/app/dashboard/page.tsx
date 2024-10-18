@@ -13,7 +13,12 @@ import { Button } from "@/components/ui/button";
 import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 
-export default function Home() {
+import { db } from "@/db";
+import { Invoices } from "@/db/schema";
+
+export default async function Home() {
+  const results = await db.select().from(Invoices);
+  console.log(results);
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className="flex flex-col justify-center h-full text-center max-w-5xl mx-auto gap-6 my-12">
@@ -42,40 +47,31 @@ export default function Home() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">8/9/2024</span>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">Philipp J. Fry</span>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span>fry@yahoo.com</span>
-            </TableCell>
-            <TableCell className="text-center p-4">
-              <Badge className="rounded-full">Open</Badge>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">$250.00</span>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">8/9/2024</span>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">Philipp J. Fry</span>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span>fry@yahoo.com</span>
-            </TableCell>
-            <TableCell className="text-center p-4">
-              <Badge className="rounded-full">Open</Badge>
-            </TableCell>
-            <TableCell className="text-left p-4">
-              <span className="font-semibold">$250.00</span>
-            </TableCell>
-          </TableRow>
+          {results.map((result) => {
+            return (
+              <TableRow key={result.id}>
+                <TableCell className="text-left p-4">
+                  <span className="font-semibold">
+                    {new Date(result.createTs).toLocaleDateString()}
+                  </span>
+                </TableCell>
+                <TableCell className="text-left p-4">
+                  <span className="font-semibold">Philipp J. Fry</span>
+                </TableCell>
+                <TableCell className="text-left p-4">
+                  <span>fry@yahoo.com</span>
+                </TableCell>
+                <TableCell className="text-center p-4">
+                  <Badge className="rounded-full">{result.status}</Badge>
+                </TableCell>
+                <TableCell className="text-left p-4">
+                  <span className="font-semibold">
+                    ${(result.value / 100).toFixed(2)}
+                  </span>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </main>

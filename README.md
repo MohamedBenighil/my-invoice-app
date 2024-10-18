@@ -69,4 +69,7 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 #01.17.45 nextjs comes with Form component that does the work (just before) for us
 
+
+# 01:20:11 - List Invoices in a DataTable
+
 ```
