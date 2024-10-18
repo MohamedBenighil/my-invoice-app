@@ -12,14 +12,14 @@ export default function Home() {
   const [state, setState] = useState("ready");
 
   // only on client
-  //async function hundleOnSubmit(event: SyntheticEvent) {
-  //  if (state === "pending") {
-  //    event.preventDefault();
-  //    return;
-  //  }
-  //  setState("pending");
-  //  console.log("hey");
-  //}
+  async function hundleOnSubmit(event: SyntheticEvent) {
+    if (state === "pending") {
+      event.preventDefault();
+      return;
+    }
+    setState("pending");
+    console.log("hey");
+  }
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className="flex flex-col justify-left h-full  max-w-5xl mx-auto gap-6 my-12">
@@ -29,7 +29,7 @@ export default function Home() {
 
       <Form
         action={createAction}
-        //onSubmit={hundleOnSubmit}
+        onSubmit={hundleOnSubmit}
         className="grid gap-4 max-w-xs"
       >
         <div>
