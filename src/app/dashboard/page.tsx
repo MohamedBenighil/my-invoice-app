@@ -50,34 +50,36 @@ export default async function Home() {
           {results.map((result) => {
             return (
               <TableRow key={result.id}>
-                <TableCell className="text-left p-4">
+                <TableCell className="p-0 text-left ">
                   <Link
                     href={`/invoices/${result.id}`}
-                    className="font-semibold"
+                    className="font-semibold block p-4"
                   >
                     {new Date(result.createTs).toLocaleDateString()}
                   </Link>
                 </TableCell>
-                <TableCell className="text-left p-4">
+                <TableCell className="p-0 text-left ">
                   <Link
                     href={`/invoices/${result.id}`}
-                    className="font-semibold"
+                    className="font-semibold block p-4"
                   >
                     Philipp J. Fry
                   </Link>
                 </TableCell>
-                <TableCell className="text-left p-4">
-                  <Link href={`/invoices/${result.id}`}>fry@yahoo.com</Link>
+                <TableCell className="p-0 text-left ">
+                  <Link className="block p-4" href={`/invoices/${result.id}`}>
+                    fry@yahoo.com
+                  </Link>
                 </TableCell>
-                <TableCell className="text-center p-4">
-                  <Link href={`/invoices/${result.id}`}>
+                <TableCell className="p-0 text-center">
+                  <Link className="block p-4" href={`/invoices/${result.id}`}>
                     <Badge className="rounded-full">{result.status}</Badge>
                   </Link>
                 </TableCell>
-                <TableCell className="text-left p-4">
+                <TableCell className="p-0 text-left">
                   <Link
                     href={`/invoices/${result.id}`}
-                    className="font-semibold"
+                    className="font-semibold block p-4"
                   >
                     ${(result.value / 100).toFixed(2)}
                   </Link>
