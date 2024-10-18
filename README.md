@@ -66,4 +66,7 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 #01.10.30 what if use react 19 feature such useFormStatus hook ? the way we are using does not activate useFormStatus hook
     # after making chnages, test it : devtools > network > 3G
+
+#01.17.45 nextjs comes with Form component that does the work (just before) for us
+
 ```

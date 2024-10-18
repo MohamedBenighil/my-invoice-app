@@ -6,25 +6,20 @@ import { Label } from "@/components/ui/Label";
 import { createAction } from "@/app/actions";
 import { SyntheticEvent, useState, startTransition } from "react";
 import SubmitButton from "@/components/SubmitButton";
+import Form from "next/Form";
 
 export default function Home() {
   const [state, setState] = useState("ready");
 
   // only on client
-  async function hundleOnSubmit(event: SyntheticEvent) {
-    event.preventDefault();
-    if (state === "pending") return;
-    setState("pending");
-
-    // to get the value "true" for pending used in SubmitButton (during the submit form)
-    // also upgrade to next js 15
-    startTransition(async () => {
-      const target = event.target as HTMLFormElement;
-      const formData = new FormData(target);
-      await createAction(formData);
-      console.log("hey");
-    });
-  }
+  //async function hundleOnSubmit(event: SyntheticEvent) {
+  //  if (state === "pending") {
+  //    event.preventDefault();
+  //    return;
+  //  }
+  //  setState("pending");
+  //  console.log("hey");
+  //}
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className="flex flex-col justify-left h-full  max-w-5xl mx-auto gap-6 my-12">
@@ -32,9 +27,9 @@ export default function Home() {
         <h1 className="text-3xl font-bold">Create invoices</h1>
       </div>
 
-      <form
+      <Form
         action={createAction}
-        onSubmit={hundleOnSubmit}
+        //onSubmit={hundleOnSubmit}
         className="grid gap-4 max-w-xs"
       >
         <div>
@@ -64,7 +59,7 @@ export default function Home() {
         <div>
           <SubmitButton />
         </div>
-      </form>
+      </Form>
     </main>
   );
 }
