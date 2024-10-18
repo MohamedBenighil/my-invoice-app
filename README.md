@@ -71,5 +71,5 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 
 # 01:20:11 - List Invoices in a DataTable
-
+    # to make a table row clickable, do not use Link over the <Tablerow>, but over the <span>
 ```

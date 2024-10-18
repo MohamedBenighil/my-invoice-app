@@ -51,23 +51,36 @@ export default async function Home() {
             return (
               <TableRow key={result.id}>
                 <TableCell className="text-left p-4">
-                  <span className="font-semibold">
+                  <Link
+                    href={`/invoices/${result.id}`}
+                    className="font-semibold"
+                  >
                     {new Date(result.createTs).toLocaleDateString()}
-                  </span>
+                  </Link>
                 </TableCell>
                 <TableCell className="text-left p-4">
-                  <span className="font-semibold">Philipp J. Fry</span>
+                  <Link
+                    href={`/invoices/${result.id}`}
+                    className="font-semibold"
+                  >
+                    Philipp J. Fry
+                  </Link>
                 </TableCell>
                 <TableCell className="text-left p-4">
-                  <span>fry@yahoo.com</span>
+                  <Link href={`/invoices/${result.id}`}>fry@yahoo.com</Link>
                 </TableCell>
                 <TableCell className="text-center p-4">
-                  <Badge className="rounded-full">{result.status}</Badge>
+                  <Link href={`/invoices/${result.id}`}>
+                    <Badge className="rounded-full">{result.status}</Badge>
+                  </Link>
                 </TableCell>
                 <TableCell className="text-left p-4">
-                  <span className="font-semibold">
+                  <Link
+                    href={`/invoices/${result.id}`}
+                    className="font-semibold"
+                  >
                     ${(result.value / 100).toFixed(2)}
-                  </span>
+                  </Link>
                 </TableCell>
               </TableRow>
             );
