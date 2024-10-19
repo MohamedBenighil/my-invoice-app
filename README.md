@@ -76,4 +76,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 #01:28:19 - Dynamic Page Routes for Invoices
     # add cn() to dynamic render css + use capitalize
+
+#01:38:24 - Catching & Handling Errors
+    # try to set invoiceId to a number which does not exists ? you get an error ==> fix : use notFound()
+    # try to set invoiceId NaN ? you get an error ==> fix : throw Error, then create error.tsx in root
+    # display a nice page error : use  NextError (NextError is name provided by me ) component from next/error
 ```
