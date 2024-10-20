@@ -24,7 +24,7 @@ export default async function Home() {
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className=" h-full">
       <Container>
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-6">
           <h1 className="text-3xl font-bold">Invoices</h1>
           <p>
             <Button className="inline-flex gap-2" variant="ghost" asChild>

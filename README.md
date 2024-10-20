@@ -1,6 +1,6 @@
 ## Getting Started
 
-```bash
+````bash
 # run the development server:
 npm run dev
 # or
@@ -96,4 +96,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # instead of going to / for singing/signout, we need a header
         # add header
         # add footer
-```
+    # add <Container> to form (app/invoices/new/page.jsx)
+    # add <Container> to  (app/invoices/[invoiceId]/page.jsx)
+
+    # use css grid to ensure footer is stack on buttom: root layout.
+    ```
+````
