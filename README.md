@@ -91,4 +91,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 #01:47:18 - Protecting Routes with Clerk Middleware
     # middleware: gives the ability to run code BEFORE the request is completed
     # Now you can not access the routes (ex: click login) WITHOUT Sign in
+
+#01:52:04 - Creating a Page Layout with Site Header & Footer
+    # instead of going to / for singing/signout, we need a header
+        # add header
 ```
