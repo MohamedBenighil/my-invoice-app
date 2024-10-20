@@ -95,4 +95,5 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 #01:52:04 - Creating a Page Layout with Site Header & Footer
     # instead of going to / for singing/signout, we need a header
         # add header
+        # add footer
 ```
