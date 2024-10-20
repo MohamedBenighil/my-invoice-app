@@ -87,4 +87,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
         # create app, select: email + goolle, install dependenies + copy env vars, add middleware
         # add <ClerkProvider> in src loyout
         # add the rest of clerk componenet to root page.tsx
+
+#01:47:18 - Protecting Routes with Clerk Middleware
+    # middleware: gives the ability to run code BEFORE the request is completed
+    # Now you can not access the routes (ex: click login) WITHOUT Sign in
 ```
