@@ -81,4 +81,10 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # try to set invoiceId to a number which does not exists ? you get an error ==> fix : use notFound()
     # try to set invoiceId NaN ? you get an error ==> fix : throw Error, then create error.tsx in root
     # display a nice page error : use  NextError (NextError is name provided by me ) component from next/error
+
+# 01:43:11 - Adding Social Login with Clerk
+    # create account : https://clerk.com/
+        # create app, select: email + goolle, install dependenies + copy env vars, add middleware
+        # add <ClerkProvider> in src loyout
+        # add the rest of clerk componenet to root page.tsx
 ```
