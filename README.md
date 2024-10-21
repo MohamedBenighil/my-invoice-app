@@ -105,4 +105,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # google : custom sign up : add the pages then verify they work : visit /sign-up & /sign-in
     # when you click sign in button it does'nt work ! add env vars (from the doc always )
 
+
+
+#02:07:46 - Custom Login Page with Clerk Elements
+    # google : clerk elements (to really customize the UI) > see examples
+
 ```
