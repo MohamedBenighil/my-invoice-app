@@ -1,6 +1,6 @@
 ## Getting Started
 
-````bash
+```bash
 # run the development server:
 npm run dev
 # or
@@ -100,5 +100,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # add <Container> to  (app/invoices/[invoiceId]/page.jsx)
 
     # use css grid to ensure footer is stack on buttom: root layout.
-    ```
-````
+
+#02:03:46 - Building Login & Signup Pages
+    # google : custom sign up : add the pages then verify they work : visit /sign-up & /sign-in
+    # when you click sign in button it does'nt work ! add env vars (from the doc always )
+
+```
