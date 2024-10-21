@@ -109,5 +109,10 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 #02:07:46 - Custom Login Page with Clerk Elements
     # google : clerk elements (to really customize the UI) > see examples
+    # replace :
+        # title
+        # icon : google > lucide > search "brief" > copy svg > google: svgtojsx.com > paste the code chaznging the className
+        # change the "sign in" button
+        # change google login button + ajust the spaces
 
 ```
