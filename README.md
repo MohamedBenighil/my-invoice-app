@@ -129,4 +129,6 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
             # PS : you have 2 unkown componenets: "AnimatePresence" and "motion" ==> npm i framer-motion
         # ajust the icon, title, button and href
 
+        # once we log in we should go to dashborad. use : NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL
+
 ```
