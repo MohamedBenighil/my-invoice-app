@@ -120,4 +120,12 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # localohst:3000 > avatar > manage account > security > Two-step verification > scan qr code with authenticator ap, then ente 6 digits
         # now next time you login, it uses mfa (PS. desbale env variable for clerck)
 
+
+    # =========
+    # enable mfa USING env var of clerck
+        # go to sign-in/page.tsx > add "totp" strtegy
+             # see https://clerk.com/docs/customization/elements/reference/sign-in#strategy
+        # replace <Clerk.Input with https://clerk.com/docs/customization/elements/examples/primitives
+            # PS : you have 2 unkown componenets: "AnimatePresence" and "motion" ==> npm i framer-motion
+
 ```
