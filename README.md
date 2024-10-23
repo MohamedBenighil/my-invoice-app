@@ -115,4 +115,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
         # change the "sign in" button
         # change google login button + ajust the spaces
 
+# 02:13:51 - Configuring MFA (Multi-Factor Authentication)
+    # clerk account > my invoice app > configure > multi factor > X Authenticator application
+    # localohst:3000 > avatar > manage account > security > Two-step verification > scan qr code with authenticator ap, then ente 6 digits
+        # now next time you login, it uses mfa (PS. desbale env variable for clerck)
+
 ```
