@@ -131,4 +131,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
         # once we log in we should go to dashborad. use : NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL
 
+
+# 02:21:07 - Setting Up Passwordless Auth with Passkeys
+    # clerk account > my invoice app > configure > Authentication strategies > X Passkeys
+    # add passkey option to sign-in page : https://clerk.com/docs/customization/elements/reference/sign-in#passkey
+
 ```
