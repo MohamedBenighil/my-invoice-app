@@ -136,4 +136,7 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # clerk account > my invoice app > configure > Authentication strategies > X Passkeys
     # add passkey option to sign-in page : https://clerk.com/docs/customization/elements/reference/sign-in#passkey
 
+
+# 02:24:33 - Securing Server Actions with Clerk
+     # auth object https://clerk.com/docs/references/nextjs/auth-object
 ```
