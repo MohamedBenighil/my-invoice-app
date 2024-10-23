@@ -127,5 +127,6 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
              # see https://clerk.com/docs/customization/elements/reference/sign-in#strategy
         # replace <Clerk.Input with https://clerk.com/docs/customization/elements/examples/primitives
             # PS : you have 2 unkown componenets: "AnimatePresence" and "motion" ==> npm i framer-motion
+        # ajust the icon, title, button and href
 
 ```
