@@ -152,5 +152,6 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 02:35:21 - Update Invoice Status
     # part1 : install drop down menu shdcdn manually
+    # part2 : make array of status instead of hardcode
 
 ```
