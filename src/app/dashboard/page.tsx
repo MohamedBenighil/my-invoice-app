@@ -17,9 +17,15 @@ import { db } from "@/db";
 import { Invoices } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
+import { auth } from "@clerk/nextjs/server";
+import { eq } from "drizzle-orm";
 
 export default async function Home() {
-  const results = await db.select().from(Invoices);
+  const { userId } = auth();
+  const results = await db
+    .select()
+    .from(Invoices)
+    .where(eq(Invoices.userId, userId));
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className=" h-full">

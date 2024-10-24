@@ -1,10 +1,11 @@
 import { db } from "@/db";
 import { Invoices } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
+import { auth } from "@clerk/nextjs/server";
 
 export default async function InvoicePage({
   params,
@@ -13,6 +14,12 @@ export default async function InvoicePage({
 }) {
   // get the invoiceId from url parameter
   const invoiceId = parseInt(params.invoiceId);
+
+  // get userId (to restrict the access to the data to its user )
+  const { userId } = auth();
+
+  // best practise to deouble check
+  if (!userId) return;
 
   // when invalid id
   if (isNaN(invoiceId)) {
@@ -23,7 +30,7 @@ export default async function InvoicePage({
   const [result] = await db
     .select()
     .from(Invoices)
-    .where(eq(Invoices.id, invoiceId))
+    .where(and(eq(Invoices.id, invoiceId), eq(Invoices.userId, userId)))
     .limit(1);
 
   // get 404
