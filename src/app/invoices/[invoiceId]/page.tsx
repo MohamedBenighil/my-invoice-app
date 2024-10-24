@@ -6,6 +6,15 @@ import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
 import { auth } from "@clerk/nextjs/server";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 export default async function InvoicePage({
   params,
@@ -58,7 +67,19 @@ export default async function InvoicePage({
             </Badge>
           </h1>
 
-          <p></p>
+          <p>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">Change Status</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Open</DropdownMenuItem>
+                <DropdownMenuItem>Paid</DropdownMenuItem>
+                <DropdownMenuItem>Void</DropdownMenuItem>
+                <DropdownMenuItem>Collectable</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </p>
         </div>
         <p className="text-3xl mb-3">${(result.value / 100).toFixed(2)}</p>
         <p className="text-lg mb-8"> {result.description}</p>

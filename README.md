@@ -149,4 +149,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 # 02:31:02 - Restricting Invoice Access by User
     # add check on dashboard (where fetch all data)
     # add check on invoice (where to fetch a spicific invoice)
+
+# 02:35:21 - Update Invoice Status
+    # part1 : install drop down menu shdcdn manually
+
 ```
