@@ -139,4 +139,10 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 02:24:33 - Securing Server Actions with Clerk
      # auth object https://clerk.com/docs/references/nextjs/auth-object
+
+# 02:27:44 - Add New User ID Column to Invoices TODO
+    # add userId field to Invoices table schema
+    # Delete all data on Invoices table
+    # generate and migrate
+    # update insert query on action: add userId
 ```
