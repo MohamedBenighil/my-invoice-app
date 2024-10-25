@@ -153,5 +153,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 # 02:35:21 - Update Invoice Status
     # part1 : install drop down menu shdcdn manually
     # part2 : make array of status instead of hardcode
+    # part3 : when we click drop down menu item, we should update the value of <Badge>, in invoices/[invoiceId]
+        # we can use client or server component, but we use form since it is alredy server componenet
+
 
 ```

@@ -10,30 +10,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-const AVAILABLE_STATUS = [
-  {
-    id: "open",
-    label: "Open",
-  },
-  {
-    id: "paid",
-    label: "Paid",
-  },
-  {
-    id: "void",
-    label: "Void",
-  },
-  {
-    id: "uncollectable",
-    label: "Uncollectable",
-  },
-];
+import { AVAILABLE_STATUS } from "@/data/invoices";
+import { updateStatusAction } from "@/app/actions";
 
 export default async function InvoicePage({
   params,
@@ -95,7 +77,11 @@ export default async function InvoicePage({
                 {AVAILABLE_STATUS.map((status) => {
                   return (
                     <DropdownMenuItem id={status.id}>
-                      {status.label}
+                      <form action={updateStatusAction}>
+                        <input type="hidden" name="id" value={invoiceId} />
+                        <input type="hidden" name="status" value={status.id} />
+                        <button>{status.label}</button>
+                      </form>
                     </DropdownMenuItem>
                   );
                 })}
