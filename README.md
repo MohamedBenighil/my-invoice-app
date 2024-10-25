@@ -155,7 +155,11 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # part2 : make array of status instead of hardcode
     # part3 : when we click drop down menu item, we should update the value of <Badge>, in invoices/[invoiceId]
         # we can use client or server component, but we use form since it is alredy server componenet
-    # part4 : you have to refresh to see the change > add revalidatePath()
+    # part4 :
+        # you have to refresh to see the change > add revalidatePath(). PS: we have some latentcy  > see next
+        # add down icon
+
+
 
 
 
