@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 
 import { AVAILABLE_STATUS } from "@/data/invoices";
 import { updateStatusAction } from "@/app/actions";
+import { ChevronDown } from "lucide-react";
 
 export default async function InvoicePage({
   params,
@@ -71,7 +72,9 @@ export default async function InvoicePage({
           <p>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">Change Status</Button>
+                <Button className="flex items-center gap-2" variant="outline">
+                  Change Status <ChevronDown className="w-4 h-auto" />
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {AVAILABLE_STATUS.map((status) => {

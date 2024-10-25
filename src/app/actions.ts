@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { Invoices, Status } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createAction(formdata: FormData) {
@@ -23,7 +24,7 @@ export async function createAction(formdata: FormData) {
     .insert(Invoices)
     .values({ value, description, userId, status: "open" })
     .returning({ id: Invoices.id });
-  redirect(`/invoices/${results[0].id}`);
+  redirect(`/invoices/${results[0].id}`, "page");
 }
 
 export async function updateStatusAction(formdata: FormData) {
@@ -35,10 +36,6 @@ export async function updateStatusAction(formdata: FormData) {
 
   const id = formdata.get("id") as string;
   const status = formdata.get("status") as Status; // instead of "as String"
-  console.log("-----------------------------------------------");
-  console.log("id", id);
-  console.log("status", status);
-  console.log("-----------------------------------------------");
 
   // proceed to update
   const results = await db
@@ -46,6 +43,6 @@ export async function updateStatusAction(formdata: FormData) {
     .set({ status })
     .where(and(eq(Invoices.id, parseInt(id)), eq(Invoices.userId, userId)));
 
-  // verify it works
-  console.log("results :", results);
+  // get the change witout refreshing
+  revalidatePath(`invoices/${id}`, "page");
 }
