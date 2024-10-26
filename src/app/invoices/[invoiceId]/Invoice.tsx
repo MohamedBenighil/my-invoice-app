@@ -28,6 +28,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
     (state, newstatus) => String(newstatus)
   );
   async function hundleOnUpdateStatus(formdata: FormData) {
+    setCurrentStatus(formdata.get("status"));
     await updateStatusAction(formdata);
   }
   return (
