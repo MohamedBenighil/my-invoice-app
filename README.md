@@ -166,6 +166,7 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
         # part3: we need a way of calling setCurrentStatus
             # part3.1 : add a second function and verify it works
             # part3.2 : call setCurrentStatus: verify it works
+            # part3.3 : what if the request fails >  add try catch
 
 
 ```

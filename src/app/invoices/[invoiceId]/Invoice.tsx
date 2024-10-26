@@ -28,8 +28,13 @@ export default function Invoice({ invoice }: InvoiceProps) {
     (state, newstatus) => String(newstatus)
   );
   async function hundleOnUpdateStatus(formdata: FormData) {
+    const orginalSatus = currentStatus;
     setCurrentStatus(formdata.get("status"));
-    await updateStatusAction(formdata);
+    try {
+      await updateStatusAction(formdata);
+    } catch (error) {
+      setCurrentStatus(orginalSatus);
+    }
   }
   return (
     <main className="h-full">
