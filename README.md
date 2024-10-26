@@ -163,6 +163,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # useOpimistic hook
         # part1 : convert invoices/[invoiceId]/page.tsx to client componenet: create a invoices/[invoiceId]/Invoice.tsx having only the view (a compy from  invoices/[invoiceId]/page.tsx without db calls ans async keyword) then import it in invoices/[invoiceId]/page.tsx
         # part2: 2.78.17 => 3.00.20 : verify still working
+        # part3: we need a way of calling setCurrentStatus
+            # part3.1 : add a second function and verify it works
 
 
 ```

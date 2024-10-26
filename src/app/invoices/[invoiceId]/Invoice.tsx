@@ -27,6 +27,9 @@ export default function Invoice({ invoice }: InvoiceProps) {
     invoice.status,
     (state, newstatus) => String(newstatus)
   );
+  async function hundleOnUpdateStatus(formdata: FormData) {
+    await updateStatusAction(formdata);
+  }
   return (
     <main className="h-full">
       <Container>
@@ -58,7 +61,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
                 {AVAILABLE_STATUS.map((status) => {
                   return (
                     <DropdownMenuItem id={status.id}>
-                      <form action={updateStatusAction}>
+                      <form action={hundleOnUpdateStatus}>
                         <input type="hidden" name="id" value={invoice.id} />
                         <input type="hidden" name="status" value={status.id} />
                         <button>{status.label}</button>
