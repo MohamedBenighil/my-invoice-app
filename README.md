@@ -156,10 +156,12 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # part3 : when we click drop down menu item, we should update the value of <Badge>, in invoices/[invoiceId]
         # we can use client or server component, but we use form since it is alredy server componenet
     # part4 :
-        # you have to refresh to see the change > add revalidatePath(). PS: we have some latentcy  > see next
+        # you have to refresh to see the change > add revalidatePath(). PS: we have some latentcy 4 > see next
         # add down icon
 
-
+# 02:54:10 - Optimistic UI Updates in React 19
+    # useOpimistic hook
+        # part1 : convert invoices/[invoiceId]/page.tsx to client componenet: create a invoices/[invoiceId]/Invoice.tsx having only the view (a compy from  invoices/[invoiceId]/page.tsx without db calls ans async keyword) then import it in invoices/[invoiceId]/page.tsx
 
 
 
