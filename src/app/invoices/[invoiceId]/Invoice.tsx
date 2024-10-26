@@ -16,12 +16,17 @@ import { Button } from "@/components/ui/button";
 import { AVAILABLE_STATUS } from "@/data/invoices";
 import { updateStatusAction } from "@/app/actions";
 import { ChevronDown } from "lucide-react";
+import { useOptimistic } from "react";
 
 interface InvoiceProps {
   invoice: typeof Invoices.$inferSelect;
 }
 
 export default function Invoice({ invoice }: InvoiceProps) {
+  const [currentStatus, setCurrentStatus] = useOptimistic(
+    invoice.status,
+    (state, newstatus) => String(newstatus)
+  );
   return (
     <main className="h-full">
       <Container>
@@ -32,13 +37,13 @@ export default function Invoice({ invoice }: InvoiceProps) {
             <Badge
               className={cn(
                 "flex rounded-full capitalize",
-                invoice.status === "open" && "bg-blue-500",
-                invoice.status === "paid" && "bg-green-600",
-                invoice.status === "void" && "bg-zinc-500",
-                invoice.status === "uncollectible" && "bg-red-600"
+                currentStatus === "open" && "bg-blue-500",
+                currentStatus === "paid" && "bg-green-600",
+                currentStatus === "void" && "bg-zinc-500",
+                currentStatus === "uncollectible" && "bg-red-600"
               )}
             >
-              {invoice.status}
+              {currentStatus}
             </Badge>
           </h1>
 
