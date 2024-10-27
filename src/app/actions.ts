@@ -24,7 +24,7 @@ export async function createAction(formdata: FormData) {
     .insert(Invoices)
     .values({ value, description, userId, status: "open" })
     .returning({ id: Invoices.id });
-  redirect(`/invoices/${results[0].id}`, "page");
+  redirect(`/invoices/${results[0].id}`);
 }
 
 export async function updateStatusAction(formdata: FormData) {
@@ -45,4 +45,23 @@ export async function updateStatusAction(formdata: FormData) {
 
   // get the change witout refreshing
   revalidatePath(`invoices/${id}`, "page");
+}
+
+export async function deleteInvoiceAction(formdata: FormData) {
+  const { userId } = auth();
+  // make sur there is a user athenticated before making request
+  if (!userId) {
+    return;
+  }
+
+  // get the id from the form
+  const id = Number(formdata.get("id"));
+
+  // delete the data
+  const result = await db
+    .delete(Invoices)
+    .where(and(eq(Invoices.id, id), eq(Invoices.userId, userId)));
+
+  // go to dahsboard
+  redirect("/dashboard");
 }
