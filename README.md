@@ -171,4 +171,5 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 03:03:27 - Deleting Invoices
     # part1: the logic of delete button is working
+    # part2: ajust the ui
 ```

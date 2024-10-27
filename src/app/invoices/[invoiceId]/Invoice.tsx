@@ -4,7 +4,7 @@ import { Invoices } from "@/db/schema";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
-import { Ellipsis } from "lucide-react";
+import { Ellipsis, Trash2 } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -56,7 +56,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
               {currentStatus}
             </Badge>
           </h1>
-          <p>
+          <div className="flex  gap-4">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button className="flex items-center gap-2" variant="outline">
@@ -77,8 +77,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
                 })}
               </DropdownMenuContent>
             </DropdownMenu>
-          </p>
-          <p>
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button className="flex items-center gap-2" variant="outline">
@@ -90,12 +89,15 @@ export default function Invoice({ invoice }: InvoiceProps) {
                 <DropdownMenuItem>
                   <form action={deleteInvoiceAction}>
                     <input type="hidden" name="id" value={invoice.id} />
-                    <button>Delete Invoice</button>
+                    <button className="flex gap-2 ">
+                      <Trash2 className="w-4 h-auto" />
+                      Delete Invoice
+                    </button>
                   </form>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </p>
+          </div>
         </div>
         <p className="text-3xl mb-3">${(invoice.value / 100).toFixed(2)}</p>
         <p className="text-lg mb-8"> {invoice.description}</p>
