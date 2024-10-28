@@ -1,6 +1,6 @@
 "use client";
 
-import { Invoices } from "@/db/schema";
+import { Custumers, Invoices } from "@/db/schema";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
@@ -29,7 +29,9 @@ import {
 } from "@/components/ui/dialog";
 
 interface InvoiceProps {
-  invoice: typeof Invoices.$inferSelect;
+  invoice: typeof Invoices.$inferSelect & {
+    custumer: typeof Custumers.$inferSelect;
+  };
 }
 
 export default function Invoice({ invoice }: InvoiceProps) {
@@ -151,13 +153,13 @@ export default function Invoice({ invoice }: InvoiceProps) {
             <strong className="block w-28 flex-shrink-0 font-medium text-sm">
               Billing Name
             </strong>
-            <span></span>
+            <span>{invoice.custumer.name}</span>
           </li>
           <li className="flex gap-4">
             <strong className="block w-28 flex-shrink-0 font-medium text-sm">
               Billing Email
             </strong>
-            <span></span>
+            <span>{invoice.custumer.email}</span>
           </li>
         </ul>
       </Container>

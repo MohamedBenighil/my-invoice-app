@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { Invoices } from "@/db/schema";
+import { Invoices, Custumers } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -38,17 +38,25 @@ export default async function InvoicePage({
     throw new Error("Invalid Invoice ID");
   }
 
-  // read from db
+  // read from db: Not only Invoices tab but both (Invoices and Custumers)
   const [result] = await db
     .select()
     .from(Invoices)
+    .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
     .where(and(eq(Invoices.id, invoiceId), eq(Invoices.userId, userId)))
     .limit(1);
+  console.log(result);
 
   // get 404
   if (!result) {
     notFound();
   }
 
-  return <Invoice invoice={result} />;
+  const invoice = {
+    ...result.invoices,
+    custumer: result.custumers,
+  };
+
+  console.log(invoice);
+  return <Invoice invoice={invoice} />;
 }

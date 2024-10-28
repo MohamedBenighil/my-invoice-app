@@ -14,7 +14,7 @@ import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 
 import { db } from "@/db";
-import { Invoices } from "@/db/schema";
+import { Custumers, Invoices } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
 import { auth } from "@clerk/nextjs/server";
@@ -25,7 +25,14 @@ export default async function Home() {
   const results = await db
     .select()
     .from(Invoices)
+    .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
     .where(eq(Invoices.userId, userId));
+
+  console.log(results);
+  const invoices = results?.map(({ invoices, custumers }) => {
+    return { ...invoices, custumer: custumers };
+  });
+  console.log(invoices);
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className=" h-full">
@@ -55,7 +62,7 @@ export default async function Home() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {results.map((result) => {
+            {invoices.map((result) => {
               return (
                 <TableRow key={result.id}>
                   <TableCell className="p-0 text-left ">
@@ -71,12 +78,12 @@ export default async function Home() {
                       href={`/invoices/${result.id}`}
                       className="font-semibold block p-4"
                     >
-                      Philipp J. Fry
+                      {result.custumer.name}
                     </Link>
                   </TableCell>
                   <TableCell className="p-0 text-left ">
                     <Link className="block p-4" href={`/invoices/${result.id}`}>
-                      fry@yahoo.com
+                      {result.custumer.email}
                     </Link>
                   </TableCell>
                   <TableCell className="p-0 text-center">
