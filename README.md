@@ -176,4 +176,7 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 3:08:15 - Add Confirmation Modal for Deletion
     # shadcn dialog
+
+# 3:15:29 - Creating Table Relationships for Customer Details
+    # part1: create custumers table, add reference in invoice table and pass custumers table to index.ts, then migrate
 ```
