@@ -179,4 +179,5 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 3:15:29 - Creating Table Relationships for Customer Details
     # part1: create custumers table, add reference in invoice table and pass custumers table to index.ts, then migrate
+    # part2: update the createActions to include both tables. Then verify it works when you create invoice using the form
 ```
