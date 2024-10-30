@@ -183,4 +183,11 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 
 # 03:22:11 - Joining Multiple Tables for Customer Data
     # how to query the data. Then update pages (dashboard and invoice/new) to include those query
+
+
+# 03:26:40 - Creating & Managing Organizations
+    # clerk site : enable organisation
+    # add <OrganizationSwitcher /> inside header, between <SignedIn>
+    # you can hide "Personal account" feature : <OrganizationSwitcher hidePersonal/>
+    # try create organisation : see you redirected to homepage instead of dashborad : use  <OrganizationSwitcher afterCreateOrganizationUrl="/dashboard" />
 ```

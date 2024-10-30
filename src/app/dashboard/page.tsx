@@ -28,11 +28,10 @@ export default async function Home() {
     .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
     .where(eq(Invoices.userId, userId));
 
-  console.log(results);
   const invoices = results?.map(({ invoices, custumers }) => {
     return { ...invoices, custumer: custumers };
   });
-  console.log(invoices);
+
   return (
     // use h-screen instead of h-full, because h-full is relative and works only with parent where the hight is defined
     <main className=" h-full">

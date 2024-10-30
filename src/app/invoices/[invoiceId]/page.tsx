@@ -57,6 +57,5 @@ export default async function InvoicePage({
     custumer: result.custumers,
   };
 
-  console.log(invoice);
   return <Invoice invoice={invoice} />;
 }

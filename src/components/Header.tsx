@@ -1,4 +1,10 @@
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import Container from "@/components/Container";
 import Link from "next/link";
 
@@ -7,9 +13,17 @@ const Header = () => {
     <header className="mt-8 mb-12">
       <Container>
         <div className="flex justify-between items-center gap-4">
-          <p className="font-bold">
-            <Link href="/dashboard">Invoicepedia</Link>
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="font-bold">
+              <Link href="/dashboard">Invoicepedia</Link>
+            </p>
+            <span className="text-slate-300">/</span>
+            <span className="-ml-2">
+              <SignedIn>
+                <OrganizationSwitcher afterCreateOrganizationUrl="/dashboard" />
+              </SignedIn>
+            </span>
+          </div>
           <div>
             <SignedOut>
               <SignInButton />
