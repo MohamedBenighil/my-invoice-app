@@ -190,4 +190,9 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
     # add <OrganizationSwitcher /> inside header, between <SignedIn>
     # you can hide "Personal account" feature : <OrganizationSwitcher hidePersonal/>
     # try create organisation : see you redirected to homepage instead of dashborad : use  <OrganizationSwitcher afterCreateOrganizationUrl="/dashboard" />
+
+
+# 03:31:39 - Add New Organization ID Column to Invoices
+     # add "organisationId" for both tables WITHOUT notNull() function
+     # update createAction. then verify it works when you create a form
 ```

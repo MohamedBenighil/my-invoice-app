@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createAction(formdata: FormData) {
-  const { userId } = auth();
+  const { userId, orgId } = auth();
 
   // make sur there is a user athenticated before making request
   if (!userId) {
@@ -26,7 +26,7 @@ export async function createAction(formdata: FormData) {
   // returned value is object having id : returning({ id: Custumers.id });
   const [custumer] = await db
     .insert(Custumers)
-    .values({ name, email, userId })
+    .values({ name, email, userId, organisationId: orgId || null }) // instead of undefined
     .returning({ id: Custumers.id });
 
   //insert the data in Invoices table with customerId got from previous
@@ -38,6 +38,7 @@ export async function createAction(formdata: FormData) {
       userId,
       status: "open",
       customerId: custumer.id,
+      organisationId: orgId || null, // instead of undefined
     })
     .returning({ id: Invoices.id });
   redirect(`/invoices/${results[0].id}`);

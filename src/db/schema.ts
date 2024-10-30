@@ -22,8 +22,9 @@ export const Invoices = pgTable("invoices", {
   id: serial("id").primaryKey().notNull(),
   createTs: timestamp("createTs").notNull().defaultNow(),
   value: integer("value").notNull(),
-  description: text("description"),
-  userId: text("userId"),
+  description: text("description").notNull(),
+  userId: text("userId").notNull(),
+  organisationId: text("organisationId"),
   customerId: integer("customerId")
     .notNull()
     .references(() => Custumers.id),
@@ -33,7 +34,8 @@ export const Invoices = pgTable("invoices", {
 export const Custumers = pgTable("custumers", {
   id: serial("id").primaryKey().notNull(),
   createTs: timestamp("createTs").notNull().defaultNow(),
-  name: text("name"),
-  email: text("email"),
-  userId: text("userId"),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  userId: text("userId").notNull(),
+  organisationId: text("organisationId"),
 });
