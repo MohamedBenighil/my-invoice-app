@@ -3,7 +3,7 @@
 import { db } from "@/db";
 import { Invoices, Status, Custumers } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -46,7 +46,7 @@ export async function createAction(formdata: FormData) {
 
 export async function updateStatusAction(formdata: FormData) {
   // first thing : check user id
-  const { userId } = auth();
+  const { userId, orgId } = auth();
   if (!userId) {
     return;
   }
@@ -54,18 +54,33 @@ export async function updateStatusAction(formdata: FormData) {
   const id = formdata.get("id") as string;
   const status = formdata.get("status") as Status; // instead of "as String"
 
-  // proceed to update
-  const results = await db
-    .update(Invoices)
-    .set({ status })
-    .where(and(eq(Invoices.id, parseInt(id)), eq(Invoices.userId, userId)));
+  let results;
+  if (orgId) {
+    results = await db
+      .update(Invoices)
+      .set({ status })
+      .where(
+        and(eq(Invoices.id, parseInt(id)), eq(Invoices.organisationId, orgId))
+      );
+  } else {
+    results = await db
+      .update(Invoices)
+      .set({ status })
+      .where(
+        and(
+          eq(Invoices.id, parseInt(id)),
+          eq(Invoices.userId, userId),
+          isNull(Invoices.organisationId)
+        )
+      );
+  }
 
   // get the change witout refreshing
   revalidatePath(`invoices/${id}`, "page");
 }
 
 export async function deleteInvoiceAction(formdata: FormData) {
-  const { userId } = auth();
+  const { userId, orgId } = auth();
   // make sur there is a user athenticated before making request
   if (!userId) {
     return;
@@ -73,11 +88,22 @@ export async function deleteInvoiceAction(formdata: FormData) {
 
   // get the id from the form
   const id = Number(formdata.get("id"));
-
-  // delete the data
-  const result = await db
-    .delete(Invoices)
-    .where(and(eq(Invoices.id, id), eq(Invoices.userId, userId)));
+  let result;
+  if (orgId) {
+    result = await db
+      .delete(Invoices)
+      .where(and(eq(Invoices.id, id), eq(Invoices.organisationId, orgId)));
+  } else {
+    result = await db
+      .delete(Invoices)
+      .where(
+        and(
+          eq(Invoices.id, id),
+          eq(Invoices.userId, userId),
+          isNull(Invoices.organisationId)
+        )
+      );
+  }
 
   // go to dahsboard
   redirect("/dashboard");

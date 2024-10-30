@@ -18,15 +18,30 @@ import { Custumers, Invoices } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
 import { auth } from "@clerk/nextjs/server";
-import { eq } from "drizzle-orm";
+import { eq, isNull, and } from "drizzle-orm";
 
 export default async function Home() {
-  const { userId } = auth();
-  const results = await db
-    .select()
-    .from(Invoices)
-    .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
-    .where(eq(Invoices.userId, userId));
+  const { userId, orgId } = auth();
+
+  if (!userId) return;
+
+  let results;
+
+  if (orgId) {
+    //  i am in active oraganisation, then i want to see ALL invoices of the organisation
+    results = await db
+      .select()
+      .from(Invoices)
+      .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
+      .where(eq(Invoices.organisationId, orgId));
+  } else {
+    //  i am in active personal account, then i want to see ONLY MY invoices where organisationID is null
+    results = await db
+      .select()
+      .from(Invoices)
+      .innerJoin(Custumers, eq(Custumers.id, Invoices.customerId))
+      .where(and(eq(Invoices.userId, userId), isNull(Invoices.organisationId)));
+  }
 
   const invoices = results?.map(({ invoices, custumers }) => {
     return { ...invoices, custumer: custumers };

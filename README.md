@@ -195,4 +195,8 @@ npx shadcn@latest add button # see app/componenets/ui & app/lib
 # 03:31:39 - Add New Organization ID Column to Invoices
      # add "organisationId" for both tables WITHOUT notNull() function
      # update createAction. then verify it works when you create a form
+
+# 03:34:40 - Restricting Access by Organization
+    # update query on dashboard, invoice/new + update and delete actions
+
 ```
